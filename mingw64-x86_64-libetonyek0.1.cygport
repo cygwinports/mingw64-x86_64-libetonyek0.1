@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-libetonyek0.1"
-VERSION=0.1.1
+VERSION=0.1.6
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Apple Keynote format import library for Win64 toolchain"
@@ -12,8 +12,11 @@ most important parts of version 2 format of Keynote."
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/libetonyek/"
 SRC_URI="http://dev-www.libreoffice.org/src/libetonyek/libetonyek-${VERSION}.tar.bz2"
 SRC_DIR="libetonyek-${VERSION}"
+PATCH_URI="
+	https://github.com/LibreOffice/libetonyek/commit/f6d14b3b510de5c50e45c98fe812a73ba00f3def.patch#/libetonyek-0.1.6-mdds12.patch
+"
 
-CYGCONF_ARGS="--with-boost-filesystem=boost_filesystem-mt --without-docs"
+CYGCONF_ARGS="--with-mdds=1.2 --without-docs"
 
 src_install() {
 	cd ${B}
